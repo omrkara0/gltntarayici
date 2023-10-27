@@ -29,6 +29,8 @@ Future _createAppOpenAd() async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom]);
 
   MobileAds.instance.initialize();
 
@@ -37,7 +39,7 @@ void main() async {
 
   OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-  OneSignal.shared.setAppId("a96ead4f-3951-4a6a-b4b2-3a5fb0846d0d");
+  OneSignal.shared.setAppId("30a6a1f2-f761-4bce-a017-47e94b5d0a2a");
 
 // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
   OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
@@ -185,19 +187,12 @@ class _SecondScreenState extends State<SecondScreen> {
         return _onWillPop();
       },
       child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "Gluten Tarayıcı",
-            ),
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    haveInt ? scanBarcode() : null;
-                    haveInt ? _showInterstitialAd() : null;
-                  },
-                  icon: FaIcon(FontAwesomeIcons.barcode))
-            ],
+          floatingActionButton: FloatingActionButton(
+            child: FaIcon(FontAwesomeIcons.barcode),
+            onPressed: () {
+              haveInt ? scanBarcode() : null;
+              haveInt ? _showInterstitialAd() : null;
+            },
           ),
           body: Stack(
             children: [
