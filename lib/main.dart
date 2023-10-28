@@ -39,7 +39,7 @@ void main() async {
 
   OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-  OneSignal.shared.setAppId("30a6a1f2-f761-4bce-a017-47e94b5d0a2a");
+  OneSignal.shared.setAppId("6b4902b7-d842-491b-8bdf-6fe222d980fe");
 
 // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
   OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Gluten Tarayıcı',
+      title: 'ÇevikSoft',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -187,81 +187,81 @@ class _SecondScreenState extends State<SecondScreen> {
         return _onWillPop();
       },
       child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            child: FaIcon(FontAwesomeIcons.barcode),
-            onPressed: () {
-              haveInt ? scanBarcode() : null;
-              haveInt ? _showInterstitialAd() : null;
-            },
-          ),
+          // floatingActionButton: FloatingActionButton(
+          //   child: FaIcon(FontAwesomeIcons.barcode),
+          //   onPressed: () {
+          //     haveInt ? scanBarcode() : null;
+          //     haveInt ? _showInterstitialAd() : null;
+          //   },
+          // ),
           body: Stack(
-            children: [
-              haveInt
-                  ? WebView(
-                      initialUrl: "https://app.glutentarayici.com",
-                      javascriptMode: JavascriptMode.unrestricted,
+        children: [
+          haveInt
+              ? WebView(
+                  initialUrl: "https://ceviksoft.com",
+                  javascriptMode: JavascriptMode.unrestricted,
 
-                      onWebViewCreated: (controller) {
-                        this.controller = controller;
-                      },
-                      onPageStarted: (finish) {
-                        setState(() {
-                          isLoading = false;
-                        });
+                  onWebViewCreated: (controller) {
+                    this.controller = controller;
+                  },
+                  onPageStarted: (finish) {
+                    setState(() {
+                      isLoading = false;
+                    });
 
-                        // controller.runJavascript();
-                      },
+                    // controller.runJavascript();
+                  },
 
-                      onProgress: (progress) {
-                        setState(() {
-                          loadingPercentage = progress;
-                        });
-                      },
-                      onPageFinished: ((url) {}),
+                  onProgress: (progress) {
+                    setState(() {
+                      loadingPercentage = progress;
+                    });
+                  },
+                  onPageFinished: ((url) {}),
 
-                      // gestureRecognizers: Set()
-                      //   ..add(Factory<VerticalDragGestureRecognizer>(
-                      //       () => VerticalDragGestureRecognizer()
-                      //         ..onDown = (DragDownDetails dragDownDetails) {
-                      //           controller.getScrollY().then((value) {
-                      //             if (value == 0 &&
-                      //                 dragDownDetails.globalPosition.direction < 1) {
-                      //               controller.reload();
-                      //             }
-                      //           });
-                      //         })),
+                  // gestureRecognizers: Set()
+                  //   ..add(Factory<VerticalDragGestureRecognizer>(
+                  //       () => VerticalDragGestureRecognizer()
+                  //         ..onDown = (DragDownDetails dragDownDetails) {
+                  //           controller.getScrollY().then((value) {
+                  //             if (value == 0 &&
+                  //                 dragDownDetails.globalPosition.direction < 1) {
+                  //               controller.reload();
+                  //             }
+                  //           });
+                  //         })),
 
-                      // navigationDelegate: (NavigationRequest request) {
-                      //   if (request.url.startsWith("https://lave.com.tr")) {
-                      //     return NavigationDecision.navigate;
-                      //   } else {
-                      //     _launchURL(request.url);
-                      //     return NavigationDecision.prevent;
-                      //   }
-                      // },
-                    )
-                  : Center(
-                      child: Text(
-                      "Lütfen İnternet Bağlantını Kontrol Et ve Tekrardan Dene",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    )),
-              if (loadingPercentage < 100 && haveInt == true)
-                LinearProgressIndicator(
-                  color: Colors.blue,
-                  value: loadingPercentage / 100.0,
-                ),
-              isLoading && haveInt
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : SizedBox.shrink()
-            ],
-          )),
+                  // navigationDelegate: (NavigationRequest request) {
+                  //   if (request.url.startsWith("https://lave.com.tr")) {
+                  //     return NavigationDecision.navigate;
+                  //   } else {
+                  //     _launchURL(request.url);
+                  //     return NavigationDecision.prevent;
+                  //   }
+                  // },
+                )
+              : Center(
+                  child: Text(
+                  "Lütfen İnternet Bağlantını Kontrol Et ve Tekrardan Dene",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                )),
+          if (loadingPercentage < 100 && haveInt == true)
+            LinearProgressIndicator(
+              color: Colors.blue,
+              value: loadingPercentage / 100.0,
+            ),
+          isLoading && haveInt
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SizedBox.shrink()
+        ],
+      )),
     );
   }
 }
